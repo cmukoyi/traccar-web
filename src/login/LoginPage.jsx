@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
-  useMediaQuery, Select, MenuItem, FormControl, Button, TextField, Link, Snackbar, IconButton, Tooltip, Box, InputAdornment,
+  useMediaQuery, Select, MenuItem, FormControl, Button, TextField, Link, Snackbar, IconButton, Tooltip, Box, InputAdornment, Typography,
 } from '@mui/material';
 import ReactCountryFlag from 'react-country-flag';
 import { makeStyles } from 'tss-react/mui';
@@ -27,22 +27,46 @@ import fetchOrThrow from '../common/util/fetchOrThrow';
 const useStyles = makeStyles()((theme) => ({
   options: {
     position: 'fixed',
-    top: theme.spacing(2),
-    right: theme.spacing(2),
+    top: theme.spacing(3),
+    right: theme.spacing(3),
     display: 'flex',
     flexDirection: 'row',
     gap: theme.spacing(1),
+    zIndex: 10,
   },
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: theme.spacing(2),
+    gap: theme.spacing(2.5),
+    padding: theme.spacing(5),
+    maxWidth: '440px',
+    margin: '0 auto',
+    background: 'rgba(255, 255, 255, 0.95)',
+    backdropFilter: 'blur(20px)',
+    borderRadius: '24px',
+    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.18)',
+    border: '1px solid rgba(255, 255, 255, 0.3)',
+  },
+  welcomeSection: {
+    textAlign: 'center',
+    marginBottom: theme.spacing(2),
+  },
+  welcomeTitle: {
+    fontSize: '2rem',
+    fontWeight: 700,
+    color: '#FF9502',
+    marginBottom: theme.spacing(1),
+  },
+  welcomeSubtitle: {
+    fontSize: '0.95rem',
+    color: theme.palette.text.secondary,
+    fontWeight: 400,
   },
   extraContainer: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    gap: theme.spacing(4),
+    gap: theme.spacing(3),
     marginTop: theme.spacing(2),
   },
   registerButton: {
@@ -50,6 +74,51 @@ const useStyles = makeStyles()((theme) => ({
   },
   link: {
     cursor: 'pointer',
+    transition: 'color 0.2s ease',
+    '&:hover': {
+      color: theme.palette.primary.main,
+    },
+  },
+  companyName: {
+    position: 'fixed',
+    bottom: theme.spacing(3),
+    right: theme.spacing(3),
+    fontWeight: 400,
+    fontSize: '0.875rem',
+    color: 'rgba(255, 255, 255, 0.9)',
+    letterSpacing: '0.5px',
+    zIndex: 10,
+    textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+  },
+  loginButton: {
+    padding: theme.spacing(1.75),
+    fontSize: '1rem',
+    fontWeight: 600,
+    textTransform: 'none',
+    borderRadius: '12px',
+    background: '#FF9502',
+    color: '#FFFFFF',
+    boxShadow: '0 4px 15px 0 rgba(255, 149, 2, 0.4)',
+    transition: 'all 0.3s ease',
+    '&:hover': {
+      background: '#FF9502',
+      transform: 'translateY(-2px)',
+      boxShadow: '0 6px 20px 0 rgba(255, 149, 2, 0.6)',
+    },
+  },
+  textField: {
+    '& .MuiOutlinedInput-root': {
+      borderRadius: '12px',
+      background: 'rgba(255, 255, 255, 0.9)',
+      transition: 'all 0.2s ease',
+      '&:hover': {
+        background: 'rgba(255, 255, 255, 1)',
+      },
+      '&.Mui-focused': {
+        background: 'rgba(255, 255, 255, 1)',
+        boxShadow: '0 0 0 3px rgba(102, 126, 234, 0.1)',
+      },
+    },
   },
 }));
 
@@ -175,6 +244,10 @@ const LoginPage = () => {
       </div>
       <div className={classes.container}>
         {useMediaQuery(theme.breakpoints.down('lg')) && <LogoImage color={theme.palette.primary.main} />}
+        <div className={classes.welcomeSection}>
+          <Typography className={classes.welcomeTitle}>ViTracker</Typography>
+          <Typography className={classes.welcomeSubtitle}>Sign in to access ViTracker Fleet Management</Typography>
+        </div>
         {!openIdForced && (
           <>
             <TextField
@@ -187,6 +260,7 @@ const LoginPage = () => {
               autoFocus={!email}
               onChange={(e) => setEmail(e.target.value)}
               helperText={failed && 'Invalid username or password'}
+              className={classes.textField}
             />
             <TextField
               required
@@ -198,6 +272,7 @@ const LoginPage = () => {
               autoComplete="current-password"
               autoFocus={!!email}
               onChange={(e) => setPassword(e.target.value)}
+              className={classes.textField}
               slotProps={{
                 input: {
                   endAdornment: (
@@ -223,6 +298,7 @@ const LoginPage = () => {
                 value={code}
                 type="number"
                 onChange={(e) => setCode(e.target.value)}
+                className={classes.textField}
               />
             )}
             <Button
@@ -231,6 +307,7 @@ const LoginPage = () => {
               variant="contained"
               color="secondary"
               disabled={!email || !password || (codeEnabled && !code)}
+              className={classes.loginButton}
             >
               {t('loginLogin')}
             </Button>
@@ -270,6 +347,7 @@ const LoginPage = () => {
           </div>
         )}
       </div>
+      <Typography className={classes.companyName}>ViSight Solutions</Typography>
       <QrCodeDialog open={showQr} onClose={() => setShowQr(false)} />
       <Snackbar
         open={!!announcement && !announcementShown}

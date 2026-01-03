@@ -10,6 +10,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import MapIcon from '@mui/icons-material/Map';
 import PersonIcon from '@mui/icons-material/Person';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
 import { sessionActions } from '../../store';
 import { useTranslation } from './LocalizationProvider';
@@ -38,6 +39,8 @@ const BottomMenu = () => {
       return 'settings';
     } if (location.pathname.startsWith('/reports')) {
       return 'reports';
+    } if (location.pathname === '/dashboard') {
+      return 'dashboard';
     } if (location.pathname === '/') {
       return 'map';
     }
@@ -83,6 +86,9 @@ const BottomMenu = () => {
       case 'map':
         navigate('/');
         break;
+      case 'dashboard':
+        navigate('/dashboard');
+        break;
       case 'reports': {
         let id = selectedDeviceId;
         if (id == null) {
@@ -124,6 +130,11 @@ const BottomMenu = () => {
             </Badge>
           )}
           value="map"
+        />
+        <BottomNavigationAction
+          label="Dashboard"
+          icon={<DashboardIcon />}
+          value="dashboard"
         />
         {!disableReports && (
           <BottomNavigationAction label={t('reportTitle')} icon={<DescriptionIcon />} value="reports" />

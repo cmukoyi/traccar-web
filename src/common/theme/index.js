@@ -5,11 +5,11 @@ import dimensions from './dimensions';
 import components from './components';
 
 export default (server, darkMode, direction) => useMemo(() => createTheme({
-  typography: {
-    fontFamily: 'Roboto,Segoe UI,Helvetica Neue,Arial,sans-serif',
-  },
   palette: palette(server, darkMode),
+  typography: {
+    fontFamily: '"Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif',
+  },
+  components: components(),
   direction,
   dimensions,
-  components,
 }), [server, darkMode, direction]);

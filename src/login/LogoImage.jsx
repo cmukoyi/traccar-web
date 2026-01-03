@@ -2,6 +2,7 @@ import { useTheme, useMediaQuery } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { makeStyles } from 'tss-react/mui';
 import Logo from '../resources/images/logo.svg?react';
+import gpsIcon from '../resources/images/gps3.png';
 
 const useStyles = makeStyles()((theme) => ({
   image: {
@@ -11,6 +12,30 @@ const useStyles = makeStyles()((theme) => ({
     width: 'auto',
     height: 'auto',
     margin: theme.spacing(2),
+  },
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: theme.spacing(2),
+    margin: theme.spacing(2),
+  },
+  gpsIcon: {
+    width: '90px',
+    height: '90px',
+    objectFit: 'contain',
+  },
+  text: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  title: {
+    fontSize: '24px',
+    fontWeight: 'bold',
+    margin: 0,
+  },
+  subtitle: {
+    fontSize: '14px',
+    margin: 0,
   },
 }));
 
@@ -29,7 +54,15 @@ const LogoImage = ({ color }) => {
     }
     return <img className={classes.image} src={logo} alt="" />;
   }
-  return <Logo className={classes.image} style={{ color }} />;
+  return (
+    <div className={classes.container}>
+      <img src={gpsIcon} alt="GPS" className={classes.gpsIcon} />
+      <div className={classes.text}>
+        <p className={classes.title} style={{ color: color || theme.palette.primary.main }}>ViTracker</p>
+        <p className={classes.subtitle} style={{ color: color || theme.palette.text.primary }}>Fleet Management</p>
+      </div>
+    </div>
+  );
 };
 
 export default LogoImage;

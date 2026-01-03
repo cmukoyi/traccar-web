@@ -1,4 +1,4 @@
-import { grey, green, indigo } from '@mui/material/colors';
+import { grey, green, indigo, blue, purple } from '@mui/material/colors';
 
 const validatedColor = (color) => (/^#([0-9A-Fa-f]{3}){1,2}$/.test(color) ? color : null);
 
@@ -6,6 +6,7 @@ export default (server, darkMode) => ({
   mode: darkMode ? 'dark' : 'light',
   background: {
     default: darkMode ? grey[900] : grey[50],
+    paper: darkMode ? grey[800] : '#ffffff',
   },
   primary: {
     main: validatedColor(server?.attributes?.colorPrimary) || (darkMode ? indigo[200] : indigo[900]),
@@ -21,5 +22,5 @@ export default (server, darkMode) => ({
   },
   alwaysDark: {
     main: grey[900],
-  }
+  },
 });
