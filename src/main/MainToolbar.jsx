@@ -22,7 +22,7 @@ const useStyles = makeStyles()((theme) => ({
   filterPanel: {
     display: 'flex',
     flexDirection: 'column',
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
     gap: theme.spacing(2),
     width: theme.dimensions.drawerWidthTablet,
   },

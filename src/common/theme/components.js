@@ -1,4 +1,4 @@
-export default {
+export default () => ({
   MuiUseMediaQuery: {
     defaultProps: {
       noSsr: true,
@@ -14,7 +14,7 @@ export default {
   MuiButton: {
     styleOverrides: {
       sizeMedium: {
-        height: '40px',
+        height: 40,
       },
     },
   },
@@ -46,4 +46,4 @@ export default {
       }),
     },
   },
-};
+});

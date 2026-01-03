@@ -37,19 +37,26 @@ const useStyles = makeStyles()((theme) => ({
     lineHeight: '0.875rem',
   },
   success: {
-    color: theme.palette.success.main,
+    color: '#10b981',
+    fontWeight: 600,
   },
   warning: {
-    color: theme.palette.warning.main,
+    color: '#f59e0b',
+    fontWeight: 600,
   },
   error: {
-    color: theme.palette.error.main,
+    color: '#ef4444',
+    fontWeight: 600,
   },
   neutral: {
     color: theme.palette.neutral.main,
   },
   selected: {
-    backgroundColor: theme.palette.action.selected,
+    backgroundColor: 'rgba(255, 149, 2, 0.1)',
+    borderLeft: '4px solid #FF9502',
+    '&:hover': {
+      backgroundColor: 'rgba(255, 149, 2, 0.15)',
+    },
   },
 }));
 

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery, useTheme } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import BottomMenu from './common/components/BottomMenu';
+import TopNavBar from './common/components/TopNavBar';
 import SocketController from './SocketController';
 import CachingController from './CachingController';
 import { useCatch, useEffectAsync } from './reactHelper';
@@ -16,6 +17,7 @@ const useStyles = makeStyles()(() => ({
   page: {
     flexGrow: 1,
     overflow: 'auto',
+    paddingTop: '70px', // Space for fixed top nav
   },
   menu: {
     zIndex: 4,
@@ -77,6 +79,7 @@ const App = () => {
       <SocketController />
       <CachingController />
       <UpdateController />
+      {desktop && <TopNavBar />}
       <div className={classes.page}>
         <Outlet />
       </div>
