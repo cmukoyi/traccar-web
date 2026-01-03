@@ -245,7 +245,7 @@ const LoginPage = () => {
       <div className={classes.container}>
         {useMediaQuery(theme.breakpoints.down('lg')) && <LogoImage color={theme.palette.primary.main} />}
         <div className={classes.welcomeSection}>
-          <Typography className={classes.welcomeTitle}>Welcome Back</Typography>
+          <Typography className={classes.welcomeTitle}>ViTracker</Typography>
           <Typography className={classes.welcomeSubtitle}>Sign in to access ViTracker Fleet Management</Typography>
         </div>
         {!openIdForced && (
