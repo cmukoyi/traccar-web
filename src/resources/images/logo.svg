@@ -11,8 +11,8 @@
    </g>
   </g>
   <g id="logotext" aria-label="ViTracker Fleet Management" fill="currentColor">
-   <text x="60" y="35" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="currentColor">ViTracker</text>
-   <text x="60" y="52" font-family="Arial, sans-serif" font-size="11" fill="currentColor">Fleet Management</text>
+   <text x="75" y="32" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="currentColor">ViTracker</text>
+   <text x="75" y="50" font-family="Arial, sans-serif" font-size="14" fill="currentColor">Fleet Management</text>
   </g>
  </g>
 </svg>

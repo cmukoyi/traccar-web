@@ -2,6 +2,7 @@ import { useMediaQuery, Paper } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import { useTheme } from '@mui/material/styles';
 import LogoImage from './LogoImage';
+import vehicleBg from '../resources/images/vehicle2.jpg';
 
 const useStyles = makeStyles()((theme) => ({
   root: {
@@ -29,6 +30,31 @@ const useStyles = makeStyles()((theme) => ({
     alignItems: 'center',
     flex: 1,
     boxShadow: '-2px 0px 16px rgba(0, 0, 0, 0.25)',
+    position: 'relative',
+    overflow: 'hidden',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundImage: `url(${vehicleBg})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      opacity: 1,
+      zIndex: 0,
+    },
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%)',
+      zIndex: 0,
+    },
     [theme.breakpoints.up('lg')]: {
       padding: theme.spacing(0, 25, 0, 0),
     },
@@ -37,6 +63,8 @@ const useStyles = makeStyles()((theme) => ({
     maxWidth: theme.spacing(52),
     padding: theme.spacing(5),
     width: '100%',
+    position: 'relative',
+    zIndex: 1,
   },
 }));
 
